@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmurua <tmurua@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/14 17:07:34 by tmurua            #+#    #+#             */
-/*   Updated: 2023/11/27 19:49:19 by tmurua           ###   ########.fr       */
+/*   Created: 2023/11/27 15:40:20 by tmurua            #+#    #+#             */
+/*   Updated: 2023/11/27 15:45:57 by tmurua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_toupper(int c)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	int	upper;
+	unsigned int	i;
 
-	if (c >= 'a' && c <= 'z')
-		upper = c - ('a' - 'A');
-	else
-		upper = c;
-	return (upper);
+	i = 0;
+	while (s[i])
+	{
+		(*f)(i, &s[i]);
+		i++;
+	}
 }

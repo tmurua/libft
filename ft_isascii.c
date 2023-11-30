@@ -6,15 +6,15 @@
 /*   By: tmurua <tmurua@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 12:11:22 by tmurua            #+#    #+#             */
-/*   Updated: 2023/11/14 15:40:50 by tmurua           ###   ########.fr       */
+/*   Updated: 2023/11/27 17:14:12 by tmurua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isascii(int a)
+int	ft_isascii(int c)
 {
-	if (a >= 0 && a <= 127)
+	if (c >= 0 && c <= 127)
 		return (1);
 	return (0);
 }

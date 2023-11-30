@@ -6,13 +6,11 @@
 /*   By: tmurua <tmurua@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 16:44:58 by tmurua            #+#    #+#             */
-/*   Updated: 2023/11/21 19:50:59 by tmurua           ###   ########.fr       */
+/*   Updated: 2023/11/20 13:29:27 by tmurua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-size_t	ft_strlen(const char *str);
 
 size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {

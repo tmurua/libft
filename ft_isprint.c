@@ -6,15 +6,15 @@
 /*   By: tmurua <tmurua@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 12:51:50 by tmurua            #+#    #+#             */
-/*   Updated: 2023/11/14 15:40:41 by tmurua           ###   ########.fr       */
+/*   Updated: 2023/11/27 17:14:51 by tmurua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isprint(int p)
+int	ft_isprint(int c)
 {
-	if (p >= 32 && p <= 126)
+	if (c >= 32 && c <= 126)
 		return (1);
 	return (0);
 }

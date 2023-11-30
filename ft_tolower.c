@@ -6,19 +6,19 @@
 /*   By: tmurua <tmurua@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 18:39:53 by tmurua            #+#    #+#             */
-/*   Updated: 2023/11/16 19:33:46 by tmurua           ###   ########.fr       */
+/*   Updated: 2023/11/27 19:55:26 by tmurua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_tolower(int upper)
+int	ft_tolower(int c)
 {
 	int	lower;
 
-	if (upper >= 'A' && upper <= 'Z')
-		lower = upper + ('a' - 'A');
+	if (c >= 'A' && c <= 'Z')
+		lower = c + ('a' - 'A');
 	else
-		lower = upper;
+		lower = c;
 	return (lower);
 }
