@@ -16,7 +16,9 @@ CFILES =	ft_strlen.c		ft_strlcpy.c	ft_strlcat.c	\
 
 OBJECTS = $(CFILES:.c=.o)
 
-BONUS_FILES =
+BONUS_FILES =	ft_lstnew.c		ft_lstadd_front.c	ft_lstsize.c	\
+				ft_lstlast.c	ft_lstadd_back.c	ft_lstdelone.c	\
+				ft_lstclear.c	ft_lstiter.c		ft_lstmap.c
 
 BONUS_OBJECTS = $(BONUS_FILES:.c=.o)
 

@@ -5,102 +5,81 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmurua <tmurua@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/27 16:04:18 by tmurua            #+#    #+#             */
-/*   Updated: 2023/11/30 18:26:11 by tmurua           ###   ########.fr       */
+/*   Created: 2023/11/30 18:26:31 by tmurua            #+#    #+#             */
+/*   Updated: 2023/12/05 17:45:59 by tmurua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	char_in_str(const char c, const char *charset);
-static size_t	count_words(const char *str, const char *charset);
-static void		wordcpy(char *to, const char *from, const char *charset);
-static void		word_split(char **splitted, const char *str, char *charset);
+static int	ft_count_words(char const *s, char c);
+static void	free_arr_strs(char **arr_strs, size_t i);
+static char	**split(char const *s, char c, char **arr_strs, size_t i);
 
 char	**ft_split(char const *s, char c)
 {
-	char	**sub_s;
-	size_t	words;
-
-	words = count_words(s, &c);
-	sub_s = (char **)malloc(sizeof(char *) * (words + 1));
-	if (sub_s == NULL)
-		return (NULL);
-	sub_s[words] = 0;
-	word_split(sub_s, s, &c);
-	return (sub_s);
-}
-
-static size_t	char_in_str(const char c, const char *charset)
-{
 	size_t	i;
+	char	**arr_strs;
 
 	i = 0;
-	if (c == '\0')
-		return (1);
-	while (charset[i] != '\0')
+	arr_strs = (char **)malloc((ft_count_words(s, c) + 1) * sizeof(char *));
+	if (!s || !arr_strs)
+		return (0);
+	arr_strs = split(s, c, arr_strs, i);
+	return (arr_strs);
+}
+
+static int	ft_count_words(char const *s, char c)
+{
+	int	count;
+
+	count = 0;
+	while (*s)
 	{
-		if (c == charset[i])
-			return (1);
-		i++;
+		while (*s == c)
+			s++;
+		if (*s)
+			count++;
+		while (*s && *s != c)
+			s++;
 	}
-	return (0);
+	return (count);
 }
 
-static size_t	count_words(const char *s, const char *charset)
+static void	free_arr_strs(char **arr_strs, size_t i)
 {
-	size_t	i;
-	size_t	words;
-
-	i = 0;
-	words = 0;
-	while (s[i] != '\0')
+	while (0 < i)
 	{
-		if (char_in_str(s[i + 1], charset) == 1 && char_in_str(s[i],
-				charset) == 0)
-			words++;
-		i++;
+		i--;
+		free(arr_strs[i]);
 	}
-	return (words);
+	free(arr_strs);
 }
 
-static void	wordcpy(char *to_sub_s, const char *from_s, const char *charset)
+static char	**split(char const *s, char c, char **arr_strs, size_t i)
 {
-	size_t	i;
+	int	word_len;
 
-	i = 0;
-	while (char_in_str(from_s[i], charset) == 0)
+	while (*s)
 	{
-		to_sub_s[i] = from_s[i];
-		i++;
-	}
-	to_sub_s[i] = '\0';
-}
-
-static void	word_split(char **split_sub_s, const char *s, char *charset)
-{
-	size_t	i;
-	size_t	j;
-	size_t	word;
-
-	i = 0;
-	word = 0;
-	while (s[i] != '\0')
-	{
-		if (char_in_str(s[i], charset) == 1)
-			i++;
-		else
+		while (*s == c)
+			s++;
+		if (*s)
 		{
-			j = 0;
-			while (char_in_str(s[i + j], charset) == 0)
-				j++;
-			split_sub_s[word] = (char *)malloc(sizeof(char) * (j + 1));
-			if (!split_sub_s[word])
-				while (word > 0)
-					free(split_sub_s[--word]) + free(split_sub_s);
-			wordcpy(split_sub_s[word], s + i, charset);
-			i = i + j;
-			word++;
+			if (!ft_strchr(s, c))
+				word_len = ft_strlen(s);
+			else
+				word_len = ft_strchr(s, c) - s;
+			arr_strs[i] = ft_substr(s, 0, word_len);
+			if (arr_strs[i] == NULL)
+			{
+				free_arr_strs(arr_strs, i);
+				return (NULL);
+			}
+			i++;
+			s = s + word_len;
 		}
 	}
+	arr_strs[i] = NULL;
+	return (arr_strs);
 }
