@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmurua <tmurua@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: tom <tmurua@student.42berlin.de>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 16:04:18 by tmurua            #+#    #+#             */
-/*   Updated: 2023/11/30 18:26:11 by tmurua           ###   ########.fr       */
+/*   Updated: 2023/12/05 12:22:31 by tom              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,9 +95,6 @@ static void	word_split(char **split_sub_s, const char *s, char *charset)
 			while (char_in_str(s[i + j], charset) == 0)
 				j++;
 			split_sub_s[word] = (char *)malloc(sizeof(char) * (j + 1));
-			if (!split_sub_s[word])
-				while (word > 0)
-					free(split_sub_s[--word]) + free(split_sub_s);
 			wordcpy(split_sub_s[word], s + i, charset);
 			i = i + j;
 			word++;
