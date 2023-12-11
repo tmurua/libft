@@ -6,7 +6,7 @@
 /*   By: tmurua <tmurua@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:23:59 by tmurua            #+#    #+#             */
-/*   Updated: 2023/11/21 17:22:54 by tmurua           ###   ########.fr       */
+/*   Updated: 2023/12/05 21:04:30 by tmurua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	*ft_memchr(const void *s, int c, size_t n)
 {
 	unsigned char	*str;
-	size_t			i;
 	unsigned char	chr;
+	size_t			i;
 
 	str = (unsigned char *) s;
 	chr = (unsigned char) c;
