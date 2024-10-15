@@ -6,7 +6,7 @@
 /*   By: tmurua <tmurua@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 17:11:17 by tmurua            #+#    #+#             */
-/*   Updated: 2023/12/05 19:30:07 by tmurua           ###   ########.fr       */
+/*   Updated: 2024/10/14 18:39:31 by tmurua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,17 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdarg.h>
+
+/* ft_printf */
+
+int		ft_print_char(char c);
+int		ft_print_str(char *str);
+int		ft_print_int(int n);
+int		ft_print_unsigned_int(long nb);
+int		ft_print_hex(unsigned long nb, const char convert);
+int		ft_print_pointer(void *ptr, const char convert);
+int		ft_printf(const char *str, ...);
 
 /* String manipulation */
 size_t	ft_strlen(const char *s);
@@ -77,5 +88,9 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+/* added for later projects */
+/* Conversion */
+long	ft_atol(const char *str);
 
 #endif

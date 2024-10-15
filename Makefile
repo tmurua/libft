@@ -1,6 +1,5 @@
 NAME = libft.a
 
-#Declared variables
 CFILES =	ft_strlen.c		ft_strlcpy.c	ft_strlcat.c	\
 			ft_isalpha.c	ft_isdigit.c	ft_isalnum.c	\
 			ft_isascii.c	ft_isprint.c	ft_strncmp.c	\
@@ -12,7 +11,10 @@ CFILES =	ft_strlen.c		ft_strlcpy.c	ft_strlcat.c	\
 			ft_putstr_fd.c	ft_putendl_fd.c	ft_putnbr_fd.c	\
 			ft_substr.c		ft_strjoin.c	ft_strtrim.c	\
 			ft_strmapi.c	ft_striteri.c	ft_split.c		\
-			ft_itoa.c
+			ft_itoa.c		ft_print_char.c	ft_print_str.c	\
+			ft_print_int.c	ft_print_unsigned_int.c	ft_print_hex.c \
+			ft_print_pointer.c	ft_printf.c	\
+			ft_atol.c
 
 OBJECTS = $(CFILES:.c=.o)
 
@@ -24,24 +26,24 @@ BONUS_OBJECTS = $(BONUS_FILES:.c=.o)
 
 CFLAGS = -Wall -Wextra -Werror
 
-CC = gcc
+CC = cc
 
-#Generating the compile files
 $(NAME): $(OBJECTS)
 	ar -rcs $(NAME) $(OBJECTS)
 all: $(NAME)
 
-#Generating object files
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< $^
+	$(CC) $(CFLAGS) -c $< -o $@
 
 bonus: $(BONUS_OBJECTS)
 		ar -rcs $(NAME) $(BONUS_OBJECTS)
 
-#Clearing out all the .o files
 clean:
 	rm -rf $(NAME) $(OBJECTS) $(BONUS_OBJECTS)
 fclean: clean
 	rm -rf $(NAME)
 
 re: clean all
+
+.PHONY: all bonus clean fclean re
+.SILENT:
